@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Hello, world!</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    //$("#commentForm").validate();
+
+    function setCharAt(str, index, chr) {
+      if (index > str.length - 1) return str;
+      return str.substring(0, index) + chr + str.substring(index + 1);
+    }
+
+    $(document).ready(function () {
+
+
+      String.prototype.replaceAt = function (index, replacement) {
+        return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+      }
+
+
+      $("#exampleInputPassword3").on("keyup",function () {
+        var gere = /^[A-Za-z]{3}\d{4}$/;
+        var sdf = /^[34][0-9]|50$/;
+        var kira = $('#exampleInputPassword3').val();
+        var blas = $('#exampleInputEmail1').val();
+        var sah = gere.test(blas);
+        var legit =sdf.test(kira);
+        if (!sah) {
+          $("#exampleInputEmail1").val("");
+          $('#exampleInputEmail1').tooltip({ 'title': 'E.g:SKJ2383' });
+          $("#exampleInputEmail1").addClass("is-invalid");
+          //$("#name_error").html("Three alphabet and four numbers only");
+        }
+       else if (legit&&sah) {
+        var kiras = $('#exampleInputPassword2').val();
+          // $("#exampleInputEmail1").val("efw2442");
+          var m = parseInt(kiras);
+          var m1 = parseInt(kira);
+          var itung = (m/100) * m1;
+          $("#rewa").html("It is " +itung.toPrecision(2) + " hours   ");
+
+        }
+        else{
+          $("#rewa").html("");
+        }
+
+        
+      });
+
+      $("#exampleInputEmail1").keyup(function () {
+        //var subjectCode= document.getElementById('#exampleInputEmail1').value;
+        var regexx = /^[A-Za-z]+$/;
+        var regex1 = /^\d+$/;
+
+        var bla = $('#exampleInputEmail1').val();
+
+        var lastChar = bla[bla.length - 1];
+        var valid1 = regexx.test(bla[0]);
+        var valid2 = regexx.test(bla[1]);
+        var valid3 = regexx.test(bla[2]);
+        var valid4 = regex1.test(bla[3]);
+        var valid5 = regex1.test(bla[4]);
+        var valid6 = regex1.test(bla[5]);
+        var valid7 = regex1.test(bla[6]);
+
+        if (!valid1) {
+
+          var cut = setCharAt(bla, 0, "");
+
+          $("#exampleInputEmail1").val(cut);
+          $("#kat").text("Three alphabet and four numbers only");
+          $("#exampleInputEmail1").addClass("is-invalid");
+
+        }
+        if (valid1) {
+
+
+          $("#kat").text("");
+          $("#exampleInputEmail1").val(bla.toUpperCase());
+          $("#exampleInputEmail1").removeClass("is-invalid");
+
+        }
+
+        if (!valid2) {
+
+          // $("#name_error").html("Three alphabet and four numbers only");
+          var cut1 = setCharAt(bla, 1, "");
+          $("#exampleInputEmail1").val(cut1);
+          $("#kat").text("Three alphabet and four numbers only");
+          $("#exampleInputEmail1").addClass("is-invalid");
+
+        }
+
+
+        if (!valid3) {
+          //$("#name_error").css("display","block");
+          var cut2 = setCharAt(bla, 2, "");
+          //  $("#name_error").html("Three alphabet and four numbers only");
+          $("#exampleInputEmail1").val(cut2);
+          $("#kat").text("Three alphabet and four numbers only");
+          $("#exampleInputEmail1").addClass("is-invalid");
+        }
+
+        if (!valid4 && bla.length == 4) {
+          var cut3 = setCharAt(bla, 3, "");
+          //  $("#name_error").html("Three alphabet and four numbers only");
+          $("#exampleInputEmail1").val(cut3);
+        }
+        if (!valid5 && bla.length == 5) {
+          var cut4 = setCharAt(bla, 4, "");
+          //  $("#name_error").html("Three alphabet and four numbers only");
+          $("#exampleInputEmail1").val(cut4);
+        }
+        if (!valid6 && bla.length == 6) {
+          var cut5 = setCharAt(bla, 5, "");
+          //  $("#name_error").html("Three alphabet and four numbers only");
+          $("#exampleInputEmail1").val(cut5);
+        }
+        if (!valid7 && bla.length == 7) {
+          var cut6 = setCharAt(bla, 6, "");
+          //  $("#name_error").html("Three alphabet and four numbers only");
+          $("#exampleInputEmail1").val(cut6);
+        }
+
+
+
+       //let isnum = /^\d+$/.test(lastChar);
+        let isnum = /([1-4])$/.test(lastChar);
+
+        var sdfs = /^[34][0-9]|50$/;
+        var kiran = $('#exampleInputPassword3').val();
+        var legits =sdfs.test(kiran);
+
+        if (legits && isnum && bla.length == 7) {
+          var SLTs = lastChar * 40;
+         var m2 = parseInt(SLTs);
+          var m4 = parseInt(kiran);
+          var itungg = (m2/100) * m4;
+          $("#rewa").html("It is " +itungg.toPrecision(2) + "%");
+        }
+        if (isnum && bla.length == 7) {
+          var SLT = lastChar * 40;
+          $("#exampleInputPassword1").val(lastChar);
+          $("#exampleInputPassword2").val(SLT);
+          $("#exampleInputEmail1").removeClass("is-invalid");
+        }
+        else if (!isnum && bla.length == 7) {
+          $("#kat").text("The last character should be 1,2, or 4");
+          $("#exampleInputEmail1").addClass("is-invalid");
+        }
+        else {
+          $("#exampleInputPassword1").val("");
+          $("#exampleInputPassword2").val("");
+          // $("#exampleInputEmail1").addClass("is-invalid");
+        }
+        ////    $("#exampleInputPassword1").css("background-color", "pink");
+
+      });
+    });
+
+    $('#exampleInputEmail1').tooltip({ 'trigger': 'focus', 'title': 'E.g:SKJ2383' });
+
+    $("#commentForm").validate();
+
+  </script>
+</head>
+
+<body>
+  <div class="container" >
+    <div class="row">
+
+
+      <div class="col-4 pt-4 pb-4 mt-4 px-4 border rounded-bottom rounded-top">
+        <form id="commentForm" class="needs-validation"></form>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Course Name</label>
+          <input type="text" class="form-control" aria-describedby="" placeholder="Enter Course Name">
+
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Course Code</label>
+
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby=""
+            placeholder="Enter Course Code" data-toggle="tooltip" data-placement="right" name="mat" title="E.g: SKJ2383"
+            maxlength="7" pattern="[A-Za-z]{3}d{4}">
+          <span id="kat" class="invalid-feedback"></span>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Credit hour</label>
+          <input type="text" class="form-control " id="exampleInputPassword1" placeholder="Credit Hour" readonly>
+
+
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">SLT</label>
+
+
+
+          <input type="text" class="form-control" id="exampleInputPassword2" placeholder="SLT" readonly>
+        </div>
+        <div class="form-group">
+
+
+
+          <label for="exampleInputEmail1">PTG percent</label>
+          <input type="text" class="form-control" id="exampleInputPassword3" placeholder="PTG percent" maxlength = "2">
+        </div>
+        <h3 class="col-sm ml-4 pr-4" id="rewa"></h3>
+        
+        </form>
+      </div>
+      <div class="col-16 pt-4 pb-4 mt-4 px-4 "></div>
+      <div class="col-16 pt-4 pb-4 mb-4 mt-4 px-4 border rounded-bottom rounded-top h-50">
+        <form>
+          
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+            <div class="col-sm">
+              <input type="text" class="form-control" id="inputPassword" placeholder="Password">
+               <span for="inputPassword" class="">Password</span>
+            </div>
+          
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+            <div class="col-sm">
+              <input type="text" class="form-control" id="inputPassword" placeholder="Password">
+               <span for="inputPassword" class="">Password</span>
+            </div>
+            
+          
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+            <div class="col-sm">
+              <input type="text" class="form-control" id="inputPassword" placeholder="Password">
+               <span for="inputPassword" class="">Password</span>
+            </div>
+            
+          
+          </div>
+        </form>
+      </div>
+      <div class="col-16 pt-4 pb-4 mt-4 px-4 "></div>
+      <div class="col-16 pt-4 pb-4 mb-4 mt-4 px-4 border rounded-bottom rounded-top h-50">
+        <form>
+          
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+            <div class="col-sm">
+              <input type="text" class="form-control" id="inputPassword" placeholder="Password">
+               <span for="inputPassword" class="">Password</span>
+            </div>
+          
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+            <div class="col-sm">
+              <input type="text" class="form-control" id="inputPassword" placeholder="Password">
+               <span for="inputPassword" class="">Password</span>
+            </div>
+            
+          
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+            <div class="col-sm">
+              <input type="text" class="form-control" id="inputPassword" placeholder="Password">
+               <span for="inputPassword" class="">Password</span>
+            </div>
+            
+          
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

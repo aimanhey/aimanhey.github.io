@@ -40,7 +40,7 @@
         var legit =sdf.test(kira);
         if (!sah) {
           $("#exampleInputEmail1").val("");
-          $('#exampleInputEmail1').tooltip({ 'title': 'E.g:SKJ2383' });
+          $('#exampleInputEmail1').tooltip();
           $("#exampleInputEmail1").addClass("is-invalid");
           //$("#name_error").html("Three alphabet and four numbers only");
         }
@@ -118,21 +118,29 @@
           var cut3 = setCharAt(bla, 3, "");
           //  $("#name_error").html("Three alphabet and four numbers only");
           $("#exampleInputEmail1").val(cut3);
+          $("#kat").text("Three alphabet and four numbers only");
+          $("#exampleInputEmail1").addClass("is-invalid");
         }
         if (!valid5 && bla.length == 5) {
           var cut4 = setCharAt(bla, 4, "");
           //  $("#name_error").html("Three alphabet and four numbers only");
           $("#exampleInputEmail1").val(cut4);
+          $("#kat").text("Three alphabet and four numbers only");
+          $("#exampleInputEmail1").addClass("is-invalid");
         }
         if (!valid6 && bla.length == 6) {
           var cut5 = setCharAt(bla, 5, "");
           //  $("#name_error").html("Three alphabet and four numbers only");
           $("#exampleInputEmail1").val(cut5);
+          $("#kat").text("Three alphabet and four numbers only");
+          $("#exampleInputEmail1").addClass("is-invalid");
         }
         if (!valid7 && bla.length == 7) {
           var cut6 = setCharAt(bla, 6, "");
           //  $("#name_error").html("Three alphabet and four numbers only");
           $("#exampleInputEmail1").val(cut6);
+          $("#kat").text("Three alphabet and four numbers only");
+          $("#exampleInputEmail1").addClass("is-invalid");
         }
 
 
@@ -149,7 +157,7 @@
          var m2 = parseInt(SLTs);
           var m4 = parseInt(kiran);
           var itungg = (m2/100) * m4;
-          $("#rewa").html("It is " +itungg.toPrecision(2) + "%");
+          $("#rewa").html("It is " +itungg.toPrecision(2) + " hours");
           $("#teradun").val(itungg);
         }
         if (isnum && bla.length == 7) {
@@ -159,7 +167,7 @@
           $("#exampleInputEmail1").removeClass("is-invalid");
         }
         else if (!isnum && bla.length == 7) {
-          $("#kat").text("The last character should be 1,2, or 4");
+          $("#kat").text("The last character should be 1,2,3 or 4");
           $("#exampleInputEmail1").addClass("is-invalid");
         }
         else {
@@ -176,15 +184,17 @@
         var teradung = $('#teradun').val();
         var s1 = $('#OnlineTnLMaterial').val();
         var vrs1= (s1/100)*teradung;
-        $("#OnlineTnLMaterials").text(vrs1 +" hours");
-        
+        if(teradung){
+        $("#OnlineTnLMaterials").text(vrs1.toPrecision(2) +" hours");
+        }
+        else{}
 
       });
       $("#OnlineActivities").keyup(function () {
         var teradungz = $('#teradun').val();
         var s2 = $('#OnlineActivities').val();
         var vrs2= (s2/100)*teradungz;
-        $("#OnlineActivitiess").text(vrs2 +" hours");
+        $("#OnlineActivitiess").text(vrs2.toPrecision(2) +" hours");
         
 
       });
@@ -192,10 +202,35 @@
         var teradungzz = $('#teradun').val();
         var s3 = $('#OnlineAssessment').val();
         var vrs3= (s3/100)*teradungzz;
-        $("#OnlineAssessments").text(vrs3 +" hours");
+        $("#OnlineAssessments").text(vrs3.toPrecision(2) +" hours");
         
 
       });
+      $("#OnlineTnLMaterials1").keyup(function () {
+        var teradungzzz = $('#teradun').val();
+        var s4 = $('#OnlineTnLMaterials1').val();
+        var vrs4= (s4/teradungzzz)*100;
+        $("#OnlineTnLMaterials1s").text(vrs4.toPrecision(2) +" %");
+        
+
+      });
+      $("#OnlineActivities1").keyup(function () {
+        var teradungzw = $('#teradun').val();
+        var s5 = $('#OnlineActivities1').val();
+        var vrs5= (s5/teradungzw)*100;
+        $("#OnlineActivitiesz").text(vrs5.toPrecision(2) +" %");
+        
+
+      });
+      $("#OnlineAssessment1").keyup(function () {
+        var teradungzwz = $('#teradun').val();
+        var s6 = $('#OnlineAssessment1').val();
+        var vrs6= (s6/teradungzwz)*100;
+        $("#OnlineAssessments1").text(vrs6.toPrecision(2) +" %");
+        
+
+      });
+
     });
 
     $('#exampleInputEmail1').tooltip({ 'trigger': 'focus', 'title': 'E.g:SKJ2383' });
@@ -205,12 +240,12 @@
   </script>
 </head>
 
-<body>
-  <div class="container" >
-    <div class="row">
+<body class="bg-dark">
+  <div class="container " >
+    <div class="row mb-4">
 
 
-      <div class="col-4 pt-4 pb-4 mt-4 pr-4 pl-4  pb-2 border rounded-bottom rounded-top">
+      <div class="col-16 pt-4 pb-4 mt-4 ml-4 mr-4 pr-4 pl-4  pb-2 border border-dark rounded-bottom rounded-top bg-light">
         <form id="commentForm" class="needs-validation"></form>
         <h5 for="inputPassword" class="">Calculator Pembelajaran Teradun Gantian (PTG)</h5>
 
@@ -245,31 +280,34 @@
 
 
           <label for="exampleInputEmail1">PTG percent</label>
-          <input type="text" class="form-control" id="exampleInputPassword3" placeholder="PTG percent" maxlength = "2">
+          <input type="text" class="form-control" id="exampleInputPassword3" placeholder="Enter your percentage preference" maxlength = "2">
         </div>
-        <h3 class="col-sm ml-4 pr-4" id="rewa"></h3>
+        <div class=" col-sm  pr-4 border" style="height: 70px;"> <h5 class="" id="rewa">It is  hours</h5></div>
+       
         <input type="text" class="form-control d-none" id="teradun" placeholder="PTG percent" maxlength = "2">
         </form>
       </div>
-      <div class="col-16 pt-4 pb-4 mt-4 px-2 "></div>
-    <div>
-      <div class="col-16 pt-4 pb-4 mb-4 mt-4 px-4 border rounded-bottom rounded-top h-50">
+      
+    
+     <!----- <div class="col-16 pt-4 pb-4 mt-4 px-2 "></div>--->
+     <div class="col mt-4 ml-2">
+      <div class=" pt-4 px-4 border border-dark rounded-bottom rounded-top h-45 bg-light" >
         <form>
-          <h5 for="inputPassword" class="">Calculate hours for 3 elements of PTG</h5>
+          <h5 for="inputPassword" class="">Calculate Hours for 3 Elements of PTG</h5>
             
           <div class="form-group row">
             <label for="inputPassword" class="col-sm-4 col-form-label">Online TnL Material</label>
             <div class="col-sm">
-              <input type="text" class="form-control" id="OnlineTnLMaterial" placeholder="Online TnL Material">
-               <span for="inputPassword" id="OnlineTnLMaterials"></span>
+              <input type="text" class="form-control" id="OnlineTnLMaterial" placeholder="Enter range 30-50">
+               <span for="inputPassword" id="OnlineTnLMaterials"><p>  </p></span>
             </div>
           
           </div>
           <div class="form-group row">
             <label for="inputPassword" class="col-sm-4 col-form-label">Online Activities</label>
             <div class="col-sm">
-              <input type="text" class="form-control" id="OnlineActivities" placeholder="Online Activities">
-               <span for="inputPassword" id="OnlineActivitiess"></span>
+              <input type="text" class="form-control" id="OnlineActivities" placeholder="Enter range 30-50">
+               <span for="inputPassword" id="OnlineActivitiess"><p>  </p></span>
             </div>
             
           
@@ -277,48 +315,52 @@
           <div class="form-group row">
             <label for="inputPassword" class="col-sm-4 col-form-label">Online Assessment</label>
             <div class="col-sm">
-              <input type="text" class="form-control" id="OnlineAssessment" placeholder="Online Assessment">
-               <span for="inputPassword" id="OnlineAssessments"></span>
+              <input type="text" class="form-control" id="OnlineAssessment" placeholder="Enter range 10-30">
+               <span for="inputPassword" id="OnlineAssessments"><p>  </p></span>
             </div>
             
           
           </div>
         </form>
       </div>
+      <div class=" pt-4 mt-4  px-4 border border-dark rounded-bottom rounded-top  bg-light" >
+        <form>
+          <h5 for="inputPassword" class="">Calculate Percentage for 3 Elements of PTG</h5>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">Online TnL Material</label>
+            <div class="col-sm">
+              <input type="text" class="form-control" id="OnlineTnLMaterials1" placeholder="Enter range 30-50">
+               <span for="inputPassword" id="OnlineTnLMaterials1s"><p>  </p></span>
+            </div>
+          
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">Online Activities</label>
+            <div class="col-sm">
+              <input type="text" class="form-control" id="OnlineActivities1" placeholder="Enter range 30-50">
+               <span for="inputPassword" id="OnlineActivitiesz"><p>  </p></span>
+            </div>
+            
+          
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">Online Assessment</label>
+            <div class="col-sm">
+              <input type="text" class="form-control" id="OnlineAssessment1" placeholder="Enter range 10-30">
+               <span for="inputPassword" id="OnlineAssessments1"><p>  </p></span>
+            </div>
+            
+          
+          </div>
+        </form>
+      </div>
+     </div>
+      
      
-      <div class="col-16 pt-4  mb-4 mt-4 px-4 border rounded-bottom rounded-top h-40" >
-        <form>
-          <h5 for="inputPassword" class="">Calculate percentage for 3 elements of PTG</h5>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Online TnL Material</label>
-            <div class="col-sm">
-              <input type="text" class="form-control" id="inputPassword" placeholder="Online TnL Material">
-               <span for="inputPassword" class=""></span>
-            </div>
-          
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Online Activities</label>
-            <div class="col-sm">
-              <input type="text" class="form-control" id="inputPassword" placeholder="Online Activities">
-               <span for="inputPassword" class=""></span>
-            </div>
-            
-          
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Online Assessment</label>
-            <div class="col-sm">
-              <input type="text" class="form-control" id="inputPassword" placeholder="Online Assessment">
-               <span for="inputPassword" class=""></span>
-            </div>
-            
-          
-          </div>
-        </form>
-      </div>
+      
+      
     </div>
-    </div>
+    
   </div>
   
 
